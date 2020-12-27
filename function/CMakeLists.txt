@@ -6,7 +6,7 @@ set(compile_options -Wall -Wcomment)
 
 set(link_flags -Wl,-z,-now -Wl,-z,-noexecstack)
 
-macro(mymacro options flags)
+function(myfunc options flags)
     message(STATUS "${options}")
     foreach(option ${options})
         message(STATUS "${option}")
@@ -19,9 +19,9 @@ macro(mymacro options flags)
 
     list(APPEND options -Werror)
     list(APPEND flags -Wl,-z,relro)
-endmacro()
+endfunction()
 
-mymacro("${compile_options}" "${link_flags}")
+myfunc("${compile_options}" "${link_flags}")
 
 message(STATUS "${compile_options}")
 message(STATUS "${link_flags}")
